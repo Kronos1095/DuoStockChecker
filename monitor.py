@@ -1,7 +1,7 @@
 import json, os, urllib.request, urllib.parse, datetime, pathlib, sys
 ROOT=pathlib.Path(__file__).resolve().parent
 OUT=ROOT/'docs'/'status.json'
-PART=os.getenv('APPLE_PART_NUMBER','').strip()
+PART=os.getenv('APPLE_PART_NUMBER','').strip() or 'MK1E4LL/A'
 TOPIC=os.getenv('NTFY_TOPIC','').strip()
 ZIPS=['10001','10314']
 def check(zipcode):
