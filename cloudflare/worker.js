@@ -20,16 +20,30 @@ export class StockMonitor{
    await this.state.storage.setAlarm(Date.now()+1000);return Response.json({started:config.retailer});
   }
   if(path==='/test'){
-   await this.state.storage.put('test',{created:Date.now(),notBefore:Date.now()+20000,message:'TEST: confirm this reaches your locked iPad promptly.'});
-   await this.state.storage.setAlarm(Date.now()+20000);return Response.json({testQueued:true});
+   try{
+    const receipt=await this.push('Duo Stock Watch TEST','TEST: Worker-to-ntfy delivery check.',APPLE);
+    return Response.json({ntfyAccepted:true,messageId:receipt.id});
+   }catch(e){return Response.json({ntfyAccepted:false,error:e.message},{status:502});}
   }
-  return Response.json(await this.state.storage.get('status')||{health:'not_started'});
+  return Response.json({...await this.state.storage.get('status')||{health:'not_started'},notification:await this.state.storage.get('notification')||{state:'not_tested'}});
  }
  async push(title,message,link){
-  if(!this.env.NTFY_TOPIC)throw Error('NTFY_TOPIC missing');
-  const headers={'Content-Type':'application/json'};if(this.env.NTFY_TOKEN)headers.Authorization=`Bearer ${this.env.NTFY_TOKEN}`;
-  const response=await fetch('https://ntfy.sh',{method:'POST',headers,body:JSON.stringify({topic:this.env.NTFY_TOPIC,title,message,priority:5,tags:['iphone','rotating_light'],click:link}),signal:AbortSignal.timeout(8000)});
-  if(!response.ok)throw Error('Push server rejected message');
+  try{
+   const topic=(this.env.NTFY_TOPIC||'').trim();
+   if(!topic)throw Error('NTFY_TOPIC is missing');
+   if(!/^[A-Za-z0-9_-]{1,64}$/.test(topic))throw Error('NTFY_TOPIC must be the topic name only (no URL, spaces, or slashes)');
+   const headers={'Content-Type':'application/json'};
+   if(this.env.NTFY_TOKEN)headers.Authorization=`Bearer ${this.env.NTFY_TOKEN.trim()}`;
+   const response=await fetch('https://ntfy.sh/',{method:'POST',headers,body:JSON.stringify({topic,title,message,priority:5,tags:['iphone','rotating_light'],click:link}),signal:AbortSignal.timeout(8000)});
+   const receipt=await response.json().catch(()=>({}));
+   if(!response.ok)throw Error(`ntfy HTTP ${response.status}${receipt.code?' (code '+receipt.code+')':''}`);
+   if(receipt.event!=='message'||!receipt.id)throw Error('ntfy returned no message receipt');
+   await this.state.storage.put('notification',{state:'accepted_by_ntfy',at:new Date().toISOString(),messageId:receipt.id});
+   return receipt;
+  }catch(e){
+   await this.state.storage.put('notification',{state:'failed',at:new Date().toISOString(),error:e.message});
+   throw e;
+  }
  }
  async alarm(){
   const retailer=await this.state.storage.get('retailer')||'Apple';
@@ -87,12 +101,13 @@ export class StockMonitor{
 export default{
  async fetch(request,env){
   const url=new URL(request.url);
-  if(url.pathname==='/setup')return new Response("<!doctype html><html><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Duo Stock Watch controls</title><style>body{font:18px system-ui;max-width:650px;margin:30px auto;padding:20px;background:#101827;color:#fff}input,button{font:inherit;padding:14px;margin:10px 0;box-sizing:border-box;width:100%}pre{white-space:pre-wrap;font-size:14px}a{color:#aecbff}</style><h1>Duo Stock Watch</h1><p>Enter the ADMIN_TOKEN you saved in Cloudflare. It stays in this page's memory and is sent only to this Worker's protected controls.</p><input type=\"password\" id=\"token\" autocomplete=\"off\" placeholder=\"ADMIN_TOKEN\"><button id=\"start\">Start Apple and AT&T checks</button><button id=\"test\">Send test in about 20 seconds</button><p>After requesting the test, lock your iPad. Confirm the notification appears with sound. Push-server acceptance does not confirm device delivery.</p><a href=\"/status\">View current status</a><pre id=\"result\"></pre><script>async function send(path){const out=document.getElementById('result');out.textContent='Sending…';try{const r=await fetch(path,{method:'POST',headers:{Authorization:'Bearer '+document.getElementById('token').value},cache:'no-store'});out.textContent=await r.text();if(r.ok&&path==='/test')out.textContent+='\\nLock your iPad now; test queued for approximately 20 seconds.';}catch(e){out.textContent=e.message;}}document.getElementById('start').onclick=()=>send('/start');document.getElementById('test').onclick=()=>send('/test');</script></html>",{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY'}});
+  if(url.pathname==='/setup')return new Response("<!doctype html><html><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Duo Stock Watch controls</title><style>body{font:18px system-ui;max-width:650px;margin:30px auto;padding:20px;background:#101827;color:#fff}input,button{font:inherit;padding:14px;margin:10px 0;box-sizing:border-box;width:100%}pre{white-space:pre-wrap;font-size:14px}a{color:#aecbff}</style><h1>Duo Stock Watch</h1><p>Enter the ADMIN_TOKEN you saved in Cloudflare. It stays in this page's memory and is sent only to this Worker's protected controls.</p><input type=\"password\" id=\"token\" autocomplete=\"off\" placeholder=\"ADMIN_TOKEN\"><button id=\"start\">Start Apple and AT&T checks</button><button id=\"test\">Send test now</button><p>Keep ntfy open for this test. The result below reports ntfy acceptance or the delivery error.</p><a href=\"/status\">View current status</a><pre id=\"result\"></pre><script>async function send(path){const out=document.getElementById('result');out.textContent='Sending…';try{const r=await fetch(path,{method:'POST',headers:{Authorization:'Bearer '+document.getElementById('token').value},cache:'no-store'});out.textContent=await r.text();}catch(e){out.textContent=e.message;}}document.getElementById('start').onclick=()=>send('/start');document.getElementById('test').onclick=()=>send('/test');</script></html>",{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY'}});
   const names=['Apple','AT&T'];
   const stub=name=>env.MONITORS.get(env.MONITORS.idFromName(name));
   if(['/start','/test'].includes(url.pathname)){
    if(request.method!=='POST'||!env.ADMIN_TOKEN||request.headers.get('Authorization')!==`Bearer ${env.ADMIN_TOKEN}`)return new Response('Unauthorized',{status:401});
-   for(const name of url.pathname==='/test'?['Apple']:names)await stub(name).fetch(new Request('https://internal'+url.pathname,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({retailer:name})}));
+   if(url.pathname==='/test')return stub('Apple').fetch(new Request('https://internal/test',{method:'POST'}));
+   for(const name of names)await stub(name).fetch(new Request('https://internal'+url.pathname,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({retailer:name})}));
    return Response.json({accepted:true});
   }
   if(url.pathname==='/status')return Response.json(await Promise.all(names.map(async name=>(await stub(name).fetch('https://internal/status')).json())),{headers:{'Cache-Control':'no-store'}});
