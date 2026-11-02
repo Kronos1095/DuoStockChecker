@@ -1,10 +1,10 @@
 """AT&T public PDP pickup lookup. ZIP results are not all-store coverage."""
-import concurrent.futures, datetime, json, pathlib
+import concurrent.futures, datetime, json, pathlib, os
 from stock_common import fetch_json, save
 BILL_CODE = '6050G'
 SKU = 'sku57765v2'
 ZIPS = ['10001','10314','10451','11201','11373','11530','11746','11755','10601','10954','12203','13204','14225','14564','07001','07601','07470','07866','08807','07728','08648','08002','08053','08401']
-OUT = pathlib.Path(__file__).resolve().parents[2] / 'docs' / 'att-status.json'
+OUT = pathlib.Path(os.getenv('STOCK_DATA_DIR',str(pathlib.Path(__file__).resolve().parents[2]/'docs'))) / 'att-status.json'
 
 def parse(data, zipcode):
     error = data.get('error')

@@ -3,7 +3,7 @@ import datetime, json, os, pathlib, urllib.parse, time
 from stock_common import fetch_json, save
 
 SKU = '6525566'  # iPhone Duo, Star White, 256GB, AT&T
-OUT = pathlib.Path(__file__).resolve().parents[2] / 'docs' / 'bestbuy-status.json'
+OUT = pathlib.Path(os.getenv('STOCK_DATA_DIR',str(pathlib.Path(__file__).resolve().parents[2]/'docs'))) / 'bestbuy-status.json'
 
 def request(path, params):
     params = dict(params, apiKey=os.environ['BESTBUY_API_KEY'])

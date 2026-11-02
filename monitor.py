@@ -2,7 +2,7 @@
 import concurrent.futures, datetime, os, pathlib, urllib.parse
 from stock_common import fetch_json, save
 ROOT=pathlib.Path(__file__).resolve().parent
-OUT=ROOT/'docs'/'status.json'
+OUT=pathlib.Path(os.getenv('STOCK_DATA_DIR',str(ROOT/'docs')))/'status.json'
 PART=os.getenv('APPLE_PART_NUMBER','').strip() or 'MK1E4LL/A'
 ZIPS=['10001','10314','11530','11755','10601','10954','12203','13204','14225','14564','07601','07866','08807','07728','08648','08002']
 
