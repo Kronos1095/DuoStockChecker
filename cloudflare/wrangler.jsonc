@@ -1,0 +1,8 @@
+{
+ "name":"duo-stock-watch",
+ "main":"worker.js",
+ "compatibility_date":"2026-11-02",
+ "durable_objects":{"bindings":[{"name":"MONITORS","class_name":"StockMonitor"}]},
+ "migrations":[{"tag":"v1","new_sqlite_classes":["StockMonitor"]}],
+ "vars":{"APPLE_HOT_ZIP":"10001"}
+}
