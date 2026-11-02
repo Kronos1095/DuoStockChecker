@@ -1,6 +1,82 @@
 {
-  "updated": "2026-11-02T18:22:29.089631+00:00",
-  "health": "setup_required",
-  "message": "Set APPLE_PART_NUMBER to the verified US Star White 256GB part number.",
-  "stores": []
+  "updated": "2026-11-02T18:51:11.770489+00:00",
+  "health": "ok",
+  "message": "Apple pickup lookup succeeded",
+  "stores": [
+    {
+      "name": "American Dream",
+      "status": "unavailable",
+      "storeNumber": "R755"
+    },
+    {
+      "name": "Downtown Brooklyn",
+      "status": "unavailable",
+      "storeNumber": "R715"
+    },
+    {
+      "name": "Fifth Avenue",
+      "status": "unavailable",
+      "storeNumber": "R095"
+    },
+    {
+      "name": "Grand Central",
+      "status": "unavailable",
+      "storeNumber": "R415"
+    },
+    {
+      "name": "Menlo Park",
+      "status": "unavailable",
+      "storeNumber": "R067"
+    },
+    {
+      "name": "Queens Center",
+      "status": "unavailable",
+      "storeNumber": "R612"
+    },
+    {
+      "name": "Short Hills",
+      "status": "unavailable",
+      "storeNumber": "R043"
+    },
+    {
+      "name": "SoHo",
+      "status": "unavailable",
+      "storeNumber": "R032"
+    },
+    {
+      "name": "Staten Island",
+      "status": "unavailable",
+      "storeNumber": "R152"
+    },
+    {
+      "name": "The Mall at Bay Plaza",
+      "status": "unavailable",
+      "storeNumber": "R753"
+    },
+    {
+      "name": "Upper East Side",
+      "status": "unavailable",
+      "storeNumber": "R582"
+    },
+    {
+      "name": "Upper West Side",
+      "status": "unavailable",
+      "storeNumber": "R251"
+    },
+    {
+      "name": "West 14th Street",
+      "status": "unavailable",
+      "storeNumber": "R250"
+    },
+    {
+      "name": "Williamsburg",
+      "status": "unavailable",
+      "storeNumber": "R594"
+    },
+    {
+      "name": "World Trade Center",
+      "status": "unavailable",
+      "storeNumber": "R654"
+    }
+  ]
 }
