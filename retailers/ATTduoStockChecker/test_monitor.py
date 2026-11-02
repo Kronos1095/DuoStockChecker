@@ -11,3 +11,4 @@ class ParserTests(unittest.TestCase):
   result=monitor.parse({'content':{'storeList':[{'id':'1','region':'NY','availableQuantity':'2'},{'id':'2','region':'NJ'},{'id':'3','region':'PA','availableQuantity':9}]}},'10001')
   self.assertEqual([s['status'] for s in result['stores']],['available','unknown'])
 if __name__=='__main__': unittest.main()
+

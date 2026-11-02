@@ -1,25 +1,25 @@
-# NYC Stock Watch — iPad / GitHub Pages edition
+# Duo Stock Watch — NY/NJ
 
-Tracks Apple pickup inventory for **iPhone Duo, Star White, 256GB** at NYC-area Apple Stores using two ZIP lookups (10001 and 10314). Includes an iPad-friendly dashboard and ntfy alerts.
+Personal tracker for iPhone Duo Star White 256GB. Apple configuration MK1E4LL/A; AT&T SKU sku57765v2 / bill code 6050G; Best Buy AT&T SKU 6525566.
 
-## Setup from iPad Safari
+## Current behavior
 
-1. Create a **private or public GitHub repository** and upload these files, preserving `.github/workflows/check.yml` and `docs/`. The Pages site is public if enabled; don't put secrets in `docs/`.
-2. In repository **Settings → Secrets and variables → Actions → Variables**, add `APPLE_PART_NUMBER` with the **verified US Apple part number** for the Star White 256GB Duo. Find it by selecting that configuration on Apple's website and inspecting the `parts.0` field of its `pickup-message` network request on a desktop browser. **No part number has been verified for this model yet. Do not substitute a retailer SKU or guess.**
-3. Install the **ntfy** iPad app and subscribe to a long random topic, e.g. `nyc-duo-` followed by 25+ random characters. In GitHub Actions **Secrets**, add `NTFY_TOPIC` containing that exact topic. ntfy public topics are not access-controlled; anyone who learns the topic can subscribe.
-4. Open **Actions → Check Apple pickup → Run workflow**. Examine its logs. An HTTP 541, 403, or malformed response is a **failed check**, not sold out. Cloud-hosted GitHub IP addresses may be blocked by Apple.
-5. In **Settings → Pages**, choose **Deploy from a branch**, branch `main`, folder `/docs`. Open the Pages URL from Safari and use **Share → Add to Home Screen**.
-6. GitHub Actions is scheduled every **5 minutes**, but execution may be delayed or disabled for inactive repositories. Free-tier quotas and GitHub policies apply. Alerts fire only when a store transitions from a previously successfully observed unavailable state to available.
+One workflow checks retailers concurrently and publishes all status files with serialized, non-overlapping runs. GitHub's shortest supported cron interval is five minutes; the schedule is offset from the top of the hour to reduce contention. Schedules can be delayed and are not real-time guarantees. No always-on server or paid runner is required.
 
-## Limitations
+Apple: 16 regional ZIP searches with three concurrent workers. AT&T: 24 ZIP searches with three workers. Regional results do not prove every NY/NJ store was checked. AT&T explicit UIS-INV-00003 is a ZIP-level out-of-stock response, not a per-store result. Both public endpoints are undocumented and can change or block cloud requests.
 
-- **Not deployed**: you must create the repository and set variables/secrets in your own GitHub account.
-- **Apple API not live-validated** in this environment. The undocumented `/shop/retail/pickup-message` endpoint has been reported working from residential IPs but sometimes blocked on cloud IPs. If blocked, the dashboard reports an error; a different authorized source or hosting arrangement will be needed.
-- Part number is **not yet verified**. Monitor deliberately refuses to claim availability until configured.
-- GitHub Actions schedule is not guaranteed real-time. Fast-selling inventory may be missed.
-- The dashboard is publicly visible when hosted on GitHub Pages. It contains store statuses only, no notification secret.
-- No purchase automation. No subscription required, subject to third-party free-tier limits.
+Best Buy: the public GraphQL product query was accessible, but fulfillment returned code 401, including the exact query observed in the retailer page. No keyless store checker is claimed. The official API adapter requires BESTBUY_API_KEY. That adapter is not live-validated with a real key. It enumerates NY/NJ stores with pagination and checks each store ID sequentially at no more than four calls/sec.
 
-## Local validation
+## Dashboard and alerts
 
-Run `python -m unittest discover -s tests -v` and `python monitor.py` (without a SKU it writes `setup_required`).
+Enable Pages from main /docs. The dashboard displays all three retailers, coverage, unknown/setup states, last success, notification configuration and stale data after 15 minutes. Refreshing the dashboard does not request new inventory. Availability is not a reservation; confirm pickup dates before checkout.
+
+Optional Actions secret NTFY_TOPIC enables alerts only for a known unavailable-to-available store transition with the same product identifier. First scans and unknown-to-available observations do not alert. ntfy topic names are private configuration, but public ntfy topics are not access-controlled. Notification errors do not invalidate stock results. Delivery is not exactly-once and failed sends are not automatically retried.
+
+## Reliability
+
+Two bounded attempts for network errors, HTTP 429 and selected 5xx; Retry-After honored up to 15 seconds, longer throttling left to next run. Authentication failures are not retried. Each adapter has a 180-second overall execution budget; failed results clear current stores and retain old data only as lastKnownStores history. Atomic writes prevent half-written JSON. All scheduled publishing uses a single concurrency group and a bounded rebase/push retry. Never print secret-bearing request URLs.
+
+Run `python -m unittest discover -s tests -v`, then `python run_all.py`. Python 3.12+, standard library only. Missing Best Buy credentials are explicitly setup_required. Set APPLE_PART_NUMBER as a repository variable only to override the default. No secrets belong in repository files or docs.
+
+Sources: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule ; https://bestbuyapis.github.io/api-documentation/ ; https://www.att.com/buy/phones/apple-iphone-duo-256gb-star-white.html
