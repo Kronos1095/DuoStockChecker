@@ -1,0 +1,157 @@
+{
+  "updated": "2026-11-02T19:03:03.893050+00:00",
+  "retailer": "AT&T",
+  "sku": "sku57765v2",
+  "billCode": "6050G",
+  "health": "ok",
+  "coverage": "ZIP searches only; complete NY/NJ store coverage is not verified.",
+  "searchesChecked": 24,
+  "searchesTotal": 24,
+  "searches": [
+    {
+      "zip": "10001",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "10314",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "10451",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "11201",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "11373",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "11530",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "11746",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "11755",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "10601",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "10954",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "12203",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "13204",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "14225",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "14564",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "07001",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "07601",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "07470",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "07866",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "08807",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "07728",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "08648",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "08002",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "08053",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    },
+    {
+      "zip": "08401",
+      "status": "unavailable",
+      "message": "AT&T reports items out of stock for this ZIP search.",
+      "stores": []
+    }
+  ],
+  "stores": []
+}
