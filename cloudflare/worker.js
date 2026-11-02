@@ -34,7 +34,7 @@ export class StockMonitor{
    if(!/^[A-Za-z0-9_-]{1,64}$/.test(topic))throw Error('NTFY_TOPIC must be the topic name only (no URL, spaces, or slashes)');
    const headers={'Content-Type':'application/json'};
    if(this.env.NTFY_TOKEN)headers.Authorization=`Bearer ${this.env.NTFY_TOKEN.trim()}`;
-   const response=await fetch('https://ntfy.sh/',{method:'POST',headers,body:JSON.stringify({topic,title,message,priority:5,tags:['iphone','rotating_light'],click:link}),signal:AbortSignal.timeout(8000)});
+   const response=await fetch('https://ntfy.sh/'+encodeURIComponent(topic),{method:'POST',headers:{...headers,'Content-Type':'text/plain; charset=utf-8',Title:title,Priority:'5',Tags:'iphone,rotating_light',Click:link},body:message,signal:AbortSignal.timeout(20000)});
    const receipt=await response.json().catch(()=>({}));
    if(!response.ok)throw Error(`ntfy HTTP ${response.status}${receipt.code?' (code '+receipt.code+')':''}`);
    if(receipt.event!=='message'||!receipt.id)throw Error('ntfy returned no message receipt');
