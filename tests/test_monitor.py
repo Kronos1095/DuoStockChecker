@@ -22,7 +22,7 @@ class ReliabilityTests(unittest.TestCase):
   with patch.object(monitor,'fetch_json',return_value={'body':{'stores':[]}}):
    with self.assertRaises(ValueError):monitor.check('10001')
  def test_apple_filters_non_target_states_and_keeps_unknown(self):
-  d={'body':{'stores':[{'storeNumber':'a','address':{'state':'NY'},'partsAvailability':{monitor.PART:{'pickupDisplay':'unexpected'}}},{'storeNumber':'b','address':{'state':'PA'}}]}}
+  d={'body':{'stores':[{'storeNumber':'a','state':'NY','partsAvailability':{monitor.PART:{'pickupDisplay':'unexpected'}}},{'storeNumber':'b','state':'PA'}]}}
   with patch.object(monitor,'fetch_json',return_value=d):self.assertEqual(monitor.check('10001')['a']['status'],'unknown');self.assertNotIn('b',monitor.check('10001'))
  def test_atomic_save(self):
   with tempfile.TemporaryDirectory() as t:
