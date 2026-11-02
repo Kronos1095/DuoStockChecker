@@ -1,0 +1,12 @@
+{
+  "updated": "2026-11-02T19:12:29.132064+00:00",
+  "sku": "6525566",
+  "product": "6525566",
+  "stores": [],
+  "health": "setup_required",
+  "message": "API key required. Public website fulfillment returned authorization code 401 during keyless testing; no keyless stock results are claimed.",
+  "retailer": "Best Buy",
+  "lastSuccess": null,
+  "notifications": "not configured",
+  "lastKnownStores": []
+}

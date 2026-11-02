@@ -1,82 +1,421 @@
 {
-  "updated": "2026-11-02T18:51:11.770489+00:00",
+  "updated": "2026-11-02T19:12:30.802826+00:00",
+  "product": "MK1E4LL/A",
   "health": "ok",
-  "message": "Apple pickup lookup succeeded",
+  "message": "Apple regional pickup searches",
+  "coverage": "Regional ZIP searches; complete NY/NJ coverage is not independently verified.",
+  "searchesChecked": 16,
+  "searchesTotal": 16,
+  "failedSearches": [],
   "stores": [
     {
+      "id": "R755",
       "name": "American Dream",
       "status": "unavailable",
-      "storeNumber": "R755"
+      "storeNumber": "R755",
+      "state": null
     },
     {
+      "id": "R104",
+      "name": "Bridgewater",
+      "status": "unavailable",
+      "storeNumber": "R104",
+      "state": null
+    },
+    {
+      "id": "R206",
+      "name": "Cherry Hill",
+      "status": "unavailable",
+      "storeNumber": "R206",
+      "state": null
+    },
+    {
+      "id": "R102",
+      "name": "Christiana Mall",
+      "status": "unavailable",
+      "storeNumber": "R102",
+      "state": null
+    },
+    {
+      "id": "R192",
+      "name": "Crocker Park",
+      "status": "unavailable",
+      "storeNumber": "R192",
+      "state": null
+    },
+    {
+      "id": "R017",
+      "name": "Crossgates",
+      "status": "unavailable",
+      "storeNumber": "R017",
+      "state": null
+    },
+    {
+      "id": "R093",
+      "name": "Danbury Fair Mall",
+      "status": "unavailable",
+      "storeNumber": "R093",
+      "state": null
+    },
+    {
+      "id": "R715",
       "name": "Downtown Brooklyn",
       "status": "unavailable",
-      "storeNumber": "R715"
+      "storeNumber": "R715",
+      "state": null
     },
     {
+      "id": "R763",
+      "name": "Downtown Detroit",
+      "status": "unavailable",
+      "storeNumber": "R763",
+      "state": null
+    },
+    {
+      "id": "R140",
+      "name": "Eastview",
+      "status": "unavailable",
+      "storeNumber": "R140",
+      "state": null
+    },
+    {
+      "id": "R081",
+      "name": "Eton",
+      "status": "unavailable",
+      "storeNumber": "R081",
+      "state": null
+    },
+    {
+      "id": "R613",
+      "name": "Evergreen Walk",
+      "status": "unavailable",
+      "storeNumber": "R613",
+      "state": null
+    },
+    {
+      "id": "R095",
       "name": "Fifth Avenue",
       "status": "unavailable",
-      "storeNumber": "R095"
+      "storeNumber": "R095",
+      "state": null
     },
     {
+      "id": "R138",
+      "name": "Freehold Raceway Mall",
+      "status": "unavailable",
+      "storeNumber": "R138",
+      "state": null
+    },
+    {
+      "id": "R117",
+      "name": "Garden State Plaza",
+      "status": "unavailable",
+      "storeNumber": "R117",
+      "state": null
+    },
+    {
+      "id": "R415",
       "name": "Grand Central",
       "status": "unavailable",
-      "storeNumber": "R415"
+      "storeNumber": "R415",
+      "state": null
     },
     {
+      "id": "R282",
+      "name": "Greenwich Avenue",
+      "status": "unavailable",
+      "storeNumber": "R282",
+      "state": null
+    },
+    {
+      "id": "R191",
+      "name": "Holyoke",
+      "status": "unavailable",
+      "storeNumber": "R191",
+      "state": null
+    },
+    {
+      "id": "R065",
+      "name": "King of Prussia",
+      "status": "unavailable",
+      "storeNumber": "R065",
+      "state": null
+    },
+    {
+      "id": "R281",
+      "name": "Lehigh Valley",
+      "status": "unavailable",
+      "storeNumber": "R281",
+      "state": null
+    },
+    {
+      "id": "R327",
+      "name": "Manhasset",
+      "status": "unavailable",
+      "storeNumber": "R327",
+      "state": null
+    },
+    {
+      "id": "R067",
       "name": "Menlo Park",
       "status": "unavailable",
-      "storeNumber": "R067"
+      "storeNumber": "R067",
+      "state": null
     },
     {
+      "id": "R046",
+      "name": "Nanuet",
+      "status": "unavailable",
+      "storeNumber": "R046",
+      "state": null
+    },
+    {
+      "id": "R446",
+      "name": "New Haven",
+      "status": "unavailable",
+      "storeNumber": "R446",
+      "state": null
+    },
+    {
+      "id": "R304",
+      "name": "Park City",
+      "status": "unavailable",
+      "storeNumber": "R304",
+      "state": null
+    },
+    {
+      "id": "R549",
+      "name": "Quaker Bridge",
+      "status": "unavailable",
+      "storeNumber": "R549",
+      "state": null
+    },
+    {
+      "id": "R612",
       "name": "Queens Center",
       "status": "unavailable",
-      "storeNumber": "R612"
+      "storeNumber": "R612",
+      "state": null
     },
     {
+      "id": "R261",
+      "name": "Ridge Hill",
+      "status": "unavailable",
+      "storeNumber": "R261",
+      "state": null
+    },
+    {
+      "id": "R103",
+      "name": "Rockaway",
+      "status": "unavailable",
+      "storeNumber": "R103",
+      "state": null
+    },
+    {
+      "id": "R060",
+      "name": "Roosevelt Field",
+      "status": "unavailable",
+      "storeNumber": "R060",
+      "state": null
+    },
+    {
+      "id": "R413",
+      "name": "Ross Park",
+      "status": "unavailable",
+      "storeNumber": "R413",
+      "state": null
+    },
+    {
+      "id": "R088",
+      "name": "Sagemore",
+      "status": "unavailable",
+      "storeNumber": "R088",
+      "state": null
+    },
+    {
+      "id": "R096",
+      "name": "Shadyside",
+      "status": "unavailable",
+      "storeNumber": "R096",
+      "state": null
+    },
+    {
+      "id": "R043",
       "name": "Short Hills",
       "status": "unavailable",
-      "storeNumber": "R043"
+      "storeNumber": "R043",
+      "state": null
     },
     {
+      "id": "R139",
+      "name": "Smith Haven",
+      "status": "unavailable",
+      "storeNumber": "R139",
+      "state": null
+    },
+    {
+      "id": "R032",
       "name": "SoHo",
       "status": "unavailable",
-      "storeNumber": "R032"
+      "storeNumber": "R032",
+      "state": null
     },
     {
+      "id": "R202",
+      "name": "SoNo Collection",
+      "status": "unavailable",
+      "storeNumber": "R202",
+      "state": null
+    },
+    {
+      "id": "R055",
+      "name": "Somerset",
+      "status": "unavailable",
+      "storeNumber": "R055",
+      "state": null
+    },
+    {
+      "id": "R147",
+      "name": "South Hills Village",
+      "status": "unavailable",
+      "storeNumber": "R147",
+      "state": null
+    },
+    {
+      "id": "R152",
       "name": "Staten Island",
       "status": "unavailable",
-      "storeNumber": "R152"
+      "storeNumber": "R152",
+      "state": null
     },
     {
+      "id": "R166",
+      "name": "Suburban Square",
+      "status": "unavailable",
+      "storeNumber": "R166",
+      "state": null
+    },
+    {
+      "id": "R353",
+      "name": "Summit Mall",
+      "status": "unavailable",
+      "storeNumber": "R353",
+      "state": null
+    },
+    {
+      "id": "R107",
+      "name": "Syracuse",
+      "status": "unavailable",
+      "storeNumber": "R107",
+      "state": null
+    },
+    {
+      "id": "R753",
       "name": "The Mall at Bay Plaza",
       "status": "unavailable",
-      "storeNumber": "R753"
+      "storeNumber": "R753",
+      "state": null
     },
     {
+      "id": "R622",
+      "name": "The Shops at Blackstone Valley",
+      "status": "unavailable",
+      "storeNumber": "R622",
+      "state": null
+    },
+    {
+      "id": "R061",
+      "name": "The Westchester",
+      "status": "unavailable",
+      "storeNumber": "R061",
+      "state": null
+    },
+    {
+      "id": "R013",
+      "name": "Tice's Corner",
+      "status": "unavailable",
+      "storeNumber": "R013",
+      "state": null
+    },
+    {
+      "id": "R582",
       "name": "Upper East Side",
       "status": "unavailable",
-      "storeNumber": "R582"
+      "storeNumber": "R582",
+      "state": null
     },
     {
+      "id": "R251",
       "name": "Upper West Side",
       "status": "unavailable",
-      "storeNumber": "R251"
+      "storeNumber": "R251",
+      "state": null
     },
     {
+      "id": "R016",
+      "name": "Walden Galleria",
+      "status": "unavailable",
+      "storeNumber": "R016",
+      "state": null
+    },
+    {
+      "id": "R162",
+      "name": "Walnut Street",
+      "status": "unavailable",
+      "storeNumber": "R162",
+      "state": null
+    },
+    {
+      "id": "R068",
+      "name": "Walt Whitman",
+      "status": "unavailable",
+      "storeNumber": "R068",
+      "state": null
+    },
+    {
+      "id": "R250",
       "name": "West 14th Street",
       "status": "unavailable",
-      "storeNumber": "R250"
+      "storeNumber": "R250",
+      "state": null
     },
     {
+      "id": "R025",
+      "name": "Westfarms",
+      "status": "unavailable",
+      "storeNumber": "R025",
+      "state": null
+    },
+    {
+      "id": "R594",
       "name": "Williamsburg",
       "status": "unavailable",
-      "storeNumber": "R594"
+      "storeNumber": "R594",
+      "state": null
     },
     {
+      "id": "R234",
+      "name": "Willow Grove Park",
+      "status": "unavailable",
+      "storeNumber": "R234",
+      "state": null
+    },
+    {
+      "id": "R325",
+      "name": "Willowbrook",
+      "status": "unavailable",
+      "storeNumber": "R325",
+      "state": null
+    },
+    {
+      "id": "R654",
       "name": "World Trade Center",
       "status": "unavailable",
-      "storeNumber": "R654"
+      "storeNumber": "R654",
+      "state": null
     }
-  ]
+  ],
+  "retailer": "Apple",
+  "lastSuccess": "2026-11-02T19:12:30.802826+00:00",
+  "notifications": "not configured"
 }
