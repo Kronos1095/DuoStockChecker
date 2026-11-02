@@ -15,8 +15,8 @@ def check(zipcode):
     for s in stores:
         a=s.get('partsAvailability',{}).get(PART,{})
         v=a.get('pickupDisplay'); key=s.get('storeNumber')
-        state=s.get('address',{}).get('state')
-        if state and state not in ('NY','NJ'): continue
+        state=s.get('state') or s.get('address',{}).get('state')
+        if state not in ('NY','NJ'): continue
         if not key: continue
         result[key]={'id':key,'name':s.get('storeName','Apple Store'),'status':v if v in ('available','unavailable') else 'unknown','storeNumber':key,'state':state}
     if not result: raise ValueError('No matching Apple store records')
