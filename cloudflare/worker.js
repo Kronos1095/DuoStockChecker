@@ -20,8 +20,8 @@ export class StockMonitor{
    await this.state.storage.setAlarm(Date.now()+1000);return Response.json({started:config.retailer});
   }
   if(path==='/test'){
-   await this.state.storage.put('test',{created:Date.now(),message:'TEST: confirm this reaches your locked iPad promptly.'});
-   await this.state.storage.setAlarm(Date.now()+1000);return Response.json({testQueued:true});
+   await this.state.storage.put('test',{created:Date.now(),notBefore:Date.now()+20000,message:'TEST: confirm this reaches your locked iPad promptly.'});
+   await this.state.storage.setAlarm(Date.now()+20000);return Response.json({testQueued:true});
   }
   return Response.json(await this.state.storage.get('status')||{health:'not_started'});
  }
@@ -74,7 +74,7 @@ export class StockMonitor{
    status={retailer,health:'error',updated:new Date(now).toISOString(),stores:[],message:'Request failed; backing off. No current stock result.'};
   }
   const test=await this.state.storage.get('test');
-  if(test&&now-test.created<120000){try{await this.push('Duo Stock Watch TEST',test.message,APPLE);await this.state.storage.delete('test');status.testAcceptedAt=new Date().toISOString();}catch{status.notificationError='Test delivery failed';}}
+  if(test&&now>=(test.notBefore||0)&&now-test.created<120000){try{await this.push('Duo Stock Watch TEST',test.message,APPLE);await this.state.storage.delete('test');status.testAcceptedAt=new Date().toISOString();}catch{status.notificationError='Test delivery failed';}}
   const pending=await this.state.storage.get('outbox')||[],remaining=[];
   for(const item of pending){
    if(now-item.created>120000||item.attempts>=4)continue;
@@ -87,6 +87,7 @@ export class StockMonitor{
 export default{
  async fetch(request,env){
   const url=new URL(request.url);
+  if(url.pathname==='/setup')return new Response("<!doctype html><html><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Duo Stock Watch controls</title><style>body{font:18px system-ui;max-width:650px;margin:30px auto;padding:20px;background:#101827;color:#fff}input,button{font:inherit;padding:14px;margin:10px 0;box-sizing:border-box;width:100%}pre{white-space:pre-wrap;font-size:14px}a{color:#aecbff}</style><h1>Duo Stock Watch</h1><p>Enter the ADMIN_TOKEN you saved in Cloudflare. It stays in this page's memory and is sent only to this Worker's protected controls.</p><input type=\"password\" id=\"token\" autocomplete=\"off\" placeholder=\"ADMIN_TOKEN\"><button id=\"start\">Start Apple and AT&T checks</button><button id=\"test\">Send test in about 20 seconds</button><p>After requesting the test, lock your iPad. Confirm the notification appears with sound. Push-server acceptance does not confirm device delivery.</p><a href=\"/status\">View current status</a><pre id=\"result\"></pre><script>async function send(path){const out=document.getElementById('result');out.textContent='Sending…';try{const r=await fetch(path,{method:'POST',headers:{Authorization:'Bearer '+document.getElementById('token').value},cache:'no-store'});out.textContent=await r.text();if(r.ok&&path==='/test')out.textContent+='\\nLock your iPad now; test queued for approximately 20 seconds.';}catch(e){out.textContent=e.message;}}document.getElementById('start').onclick=()=>send('/start');document.getElementById('test').onclick=()=>send('/test');</script></html>",{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY'}});
   const names=['Apple','AT&T'];
   const stub=name=>env.MONITORS.get(env.MONITORS.idFromName(name));
   if(['/start','/test'].includes(url.pathname)){
