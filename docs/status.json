@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T18:37:34.514254+00:00",
+  "updated": "2026-11-10T23:42:43.288039+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-10T18:37:34.514254+00:00",
+  "lastSuccess": "2026-11-10T23:42:43.288039+00:00",
   "notifications": "not configured"
 }
