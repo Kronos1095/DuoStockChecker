@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T22:17:59.429155+00:00",
+  "updated": "2026-11-13T02:41:01.948329+00:00",
   "retailer": "AT&T",
   "sku": "sku57765v2",
   "billCode": "6050G",
@@ -156,6 +156,6 @@
   "stores": [],
   "product": "sku57765v2",
   "message": "AT&T ZIP-level pickup searches",
-  "lastSuccess": "2026-11-12T22:17:59.429155+00:00",
+  "lastSuccess": "2026-11-13T02:41:01.948329+00:00",
   "notifications": "not configured"
 }
