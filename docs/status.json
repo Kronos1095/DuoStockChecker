@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T03:45:58.666087+00:00",
+  "updated": "2026-11-25T13:35:46.371431+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -144,7 +144,7 @@
     {
       "id": "R043",
       "name": "Short Hills",
-      "status": "unavailable",
+      "status": "available",
       "storeNumber": "R043",
       "state": "NJ"
     },
@@ -207,7 +207,7 @@
     {
       "id": "R251",
       "name": "Upper West Side",
-      "status": "unavailable",
+      "status": "available",
       "storeNumber": "R251",
       "state": "NY"
     },
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-25T03:45:58.666087+00:00",
+  "lastSuccess": "2026-11-25T13:35:46.371431+00:00",
   "notifications": "not configured"
 }
