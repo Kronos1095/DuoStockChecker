@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26T14:12:34.249244+00:00",
+  "updated": "2026-11-26T22:59:36.157650+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -32,7 +32,7 @@
     {
       "id": "R017",
       "name": "Crossgates",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R017",
       "state": "NY"
     },
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-26T14:12:34.249244+00:00",
+  "lastSuccess": "2026-11-26T22:59:36.157650+00:00",
   "notifications": "not configured"
 }
