@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T14:34:06.266560+00:00",
+  "updated": "2026-11-27T22:54:21.329472+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -25,7 +25,7 @@
     {
       "id": "R206",
       "name": "Cherry Hill",
-      "status": "unavailable",
+      "status": "available",
       "storeNumber": "R206",
       "state": "NJ"
     },
@@ -109,7 +109,7 @@
     {
       "id": "R612",
       "name": "Queens Center",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R612",
       "state": "NY"
     },
@@ -151,7 +151,7 @@
     {
       "id": "R139",
       "name": "Smith Haven",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R139",
       "state": "NY"
     },
@@ -165,7 +165,7 @@
     {
       "id": "R152",
       "name": "Staten Island",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R152",
       "state": "NY"
     },
@@ -186,7 +186,7 @@
     {
       "id": "R061",
       "name": "The Westchester",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R061",
       "state": "NY"
     },
@@ -221,7 +221,7 @@
     {
       "id": "R068",
       "name": "Walt Whitman",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R068",
       "state": "NY"
     },
@@ -235,7 +235,7 @@
     {
       "id": "R594",
       "name": "Williamsburg",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R594",
       "state": "NY"
     },
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-27T14:34:06.266560+00:00",
+  "lastSuccess": "2026-11-27T22:54:21.329472+00:00",
   "notifications": "not configured"
 }
