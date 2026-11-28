@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T04:27:13.723765+00:00",
+  "updated": "2026-11-28T13:26:52.811315+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -95,7 +95,7 @@
     {
       "id": "R046",
       "name": "Nanuet",
-      "status": "unavailable",
+      "status": "available",
       "storeNumber": "R046",
       "state": "NY"
     },
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-28T04:27:13.723765+00:00",
+  "lastSuccess": "2026-11-28T13:26:52.811315+00:00",
   "notifications": "not configured"
 }
