@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T22:54:21.329472+00:00",
+  "updated": "2026-11-28T04:27:13.723765+00:00",
   "product": "MK1E4LL/A",
   "health": "ok",
   "message": "Apple regional pickup searches",
@@ -25,7 +25,7 @@
     {
       "id": "R206",
       "name": "Cherry Hill",
-      "status": "available",
+      "status": "unavailable",
       "storeNumber": "R206",
       "state": "NJ"
     },
@@ -255,6 +255,6 @@
     }
   ],
   "retailer": "Apple",
-  "lastSuccess": "2026-11-27T22:54:21.329472+00:00",
+  "lastSuccess": "2026-11-28T04:27:13.723765+00:00",
   "notifications": "not configured"
 }
